@@ -1,6 +1,7 @@
 package com.example.movie_watchlist.controllers;
 
 import com.example.movie_watchlist.models.Director;
+import com.example.movie_watchlist.models.Genre;
 import com.example.movie_watchlist.models.Movie;
 import com.example.movie_watchlist.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class MovieController {
 
     @PostMapping("/add-movie")
     public ResponseEntity<String> addMovie(@RequestBody Movie movie) {
+        movie.setGenre(Genre.THRILLER);
         String ans = movieService.addMovie(movie);
         return new ResponseEntity<>(ans, HttpStatus.CREATED);
     }
@@ -49,8 +51,7 @@ public class MovieController {
     }
 
     @GetMapping("/get-movies-by-director-name/{director}")
-    public ResponseEntity<List<Movie>> getMoviesByDirectorName(
-            @PathVariable("director") String directorName) {
+    public ResponseEntity<List<Movie>> getMoviesByDirectorName(@PathVariable("director") String directorName) {
         List<Movie> moviesByDirectorName = movieService.getMoviesByDirectorName(directorName);
         return new ResponseEntity<>(moviesByDirectorName, HttpStatus.FOUND);
     }

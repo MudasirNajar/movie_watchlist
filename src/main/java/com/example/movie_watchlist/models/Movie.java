@@ -7,6 +7,8 @@ public class Movie {
 
     private int durationInMinutes;
 
+    private Genre genre;
+
 
     public String getName() {
         return name;
@@ -28,6 +30,14 @@ public class Movie {
         return durationInMinutes;
     }
 
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
     public void setDurationInMinutes(int durationInMinutes) {
         this.durationInMinutes = durationInMinutes;
     }
@@ -36,9 +46,10 @@ public class Movie {
 
     }
 
-    public Movie(String name, double imdbRating, int durationInMinutes) {
+    public Movie(String name, double imdbRating, int durationInMinutes,Genre genre) {
         this.name = name;
         this.imdbRating = imdbRating;
         this.durationInMinutes = durationInMinutes;
+        this.genre = genre;
     }
 }
